@@ -1,0 +1,12 @@
+#숫자는 무작위로 입력해도 상관없습니다.
+key_list = ["name","hp","mp","level"]
+value_list = ["기사",200,30,5]
+character = {}
+#----------------------------------------
+for a in range(0,len(key_list)):
+    character[key_list[a]] = value_list[a]
+#--------------------------------------------
+#최종 출력
+print(character)
+#실행결과
+#{'name': '기사', 'hp': 200, 'mp': 30, 'level': 5}
