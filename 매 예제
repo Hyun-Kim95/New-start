@@ -1,0 +1,7 @@
+def mul(*values):
+    k = 1
+    for value in values:
+        k *= value
+    return k
+print(mul(5,7,9,10))
+#실행결과: 3150
