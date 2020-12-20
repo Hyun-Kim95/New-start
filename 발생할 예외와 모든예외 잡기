@@ -1,0 +1,45 @@
+#변수를 입력합니다.
+list_number = [52,273,32,72,100]
+
+#try except 구문으로 예외를 처리합니다.
+try:
+    #숫자를 입력받습니다.
+    number_input = int(input("정수입력> "))
+    #리스트의 요소를 출력합니다.
+    print("{}번째 요소: {}".format(number_input,list_number[number_input]))
+except Exception as exception:
+    #예외 객체를 출력해봅니다.
+    print("type(exception):", type(exception))
+    print("exception:", exception)
+#실행결과: 정수입력>2
+#          2번째 요소: 32
+#          정수입력>haha
+#          type(exception): <class 'ValueError'>
+#          exception: invalid for inr() with base 10: 'haha'
+#          정수입력>100
+#          type(exception): <class 'IndexError'>
+#          exception: list index out of range
+#----------------------------------------------------------------------------------------
+#변수를 입력합니다.
+list_number = [52,273,32,72,100]
+
+#try except 구문으로 예외를 처리합니다.
+try:
+    #숫자를 입력받습니다.
+    number_input = int(input("정수입력> "))
+    #리스트의 요소를 출력합니다.
+    print("{}번째 요소: {}".format(number_input,list_number[number_input]))
+except ValueError as exception:
+    #ValueError가 발생하는 경우
+    print("정수를 입력해 주세요!")
+    print("exception:", exception)
+except IndexError as exception:
+    #IndexError가 발생하는 경우
+    print("리스트의 인덱스를 벗어났어요!")
+    print("exception:", exception)
+except Exception as exception: #ValueError와 IndexError가 아닌 예외가 발생했을 때 실행됩니다.
+    #이외의 예외가 발생한 경우
+    print("미리 파악하지 못한 예외가 발생했습니다.")
+    print(type(exception), exception)
+#raise구문을 이용하면 강제로 예외를 발생시킬 수 있다.(아직 구현되지 않은 부분을 일부러 죽게 만들어 잊지 않도록)
+#raise 뒤에 예외 이름을 입력(ex)raise NotImplementedError
