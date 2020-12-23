@@ -1,0 +1,19 @@
+#test_module.py 파일
+PI = 3.141592
+
+def number_input():
+    output = input("숫자입력>")
+    return float(output)
+
+def get_circumference(radius):
+    return 2*PI*radius
+
+def get_circle_area(radius):
+    return PI*radius*radius
+#--------------------------------
+#main.py
+import test_module as test
+
+radius = test.number_input()
+print(test.get_circumference(radius))
+print(test.get_circle_area(radius))
