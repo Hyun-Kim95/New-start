@@ -1,0 +1,19 @@
+# 패키지: 모듈이 모여 구조를 이룬것
+
+# ./test_package/module_a.py의 내용
+variable_a = "a 모듈의 변수"
+#----------------------------------
+#./test_package/module_b.py의 내용
+variable_b = "b 모듈의 변수"
+#--------------------------------------
+#패키지 내부의 모듈을 읽어 들입니다.
+import test_package.module_a as a
+import test_package.module_b as b
+
+#모듈 내부의 변수를 출력합니다.
+print(a.variable_a)
+print(b.variable_b)
+
+# 실행결과
+# a 모듈의 변수
+# b 모듈의 변수
