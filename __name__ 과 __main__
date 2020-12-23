@@ -1,0 +1,18 @@
+#test_module.py 파일
+print("#모듈의 __name__출력하기")
+print(__name__)
+print()
+#-------------------------------------
+#main.py파일
+import test_module
+
+print("#메인의 __name__출력하기")
+print(__name__)
+print()
+
+#실행결과
+##모듈의 __name__출력하기
+#test_module
+#
+#메인의 __name__출력하기
+#__main__
