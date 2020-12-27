@@ -1,0 +1,57 @@
+#학생 클래스를 선언합니다.
+class Student:
+    def study(self):
+        print("공부를 합니다.")
+
+#선생님 클래스를 선언합니다.
+class Teacher:
+    def teach(self):
+        print("학생을 가르칩니다.")
+
+#교실 내부의 객체 리스트를 생성합니다.
+classroom = [Student(), Student(), Teacher(), Student(), Student()]
+
+# 반복을 적용해서 적절한 함수를 호출하게 합니다.
+for person in classroom:
+    if isinstance(person, Student):
+        person.study()
+    elif isinstance(person, Teacher):
+        person.teach()
+#isinstance(인스턴스, 클래스): 인스턴스가 해당 클래스를 기반으로 만들어졌다면 True
+#-------------------------------------------------------------------------------------
+#클래스를 선언합니다.
+class Student:
+    def __init__(self, name, korean, math, english, science):
+        self.name = name
+        self.korean = korean
+        self.math = math
+        self.english = english
+        self.science = science
+
+    def get_sum(self):
+        return self.korean + self.math +\
+            self.english + self.science
+
+    def get_average(self):
+        return self.get_sum() / 4
+
+    def __str__(self):              #__str__()이라는 이름으로 함수를 선언
+        return "{}\t{}\t{}".format(\
+            self.name,\
+            self.get_sum(),\
+            self.get_average())
+
+#학생 리스트를 선언합니다.
+students = [
+    Student("윤인성", 87, 98, 88, 95),
+    Student("연하진", 92, 98, 96, 98),
+    Student("구지연", 76, 96, 94, 90),
+    Student("나선주", 98, 92, 96, 92),
+    Student("윤아린", 95, 98, 98, 98),
+    Student("윤명월", 64, 88, 92, 92)
+]
+
+#출력합니다.
+print("이름","총점","평균",sep="\t")
+for student in students:
+    print(str(student))                 #str()함수의 매개변수로 넣으면 student의 __str__()함수가 호출됩니다.
