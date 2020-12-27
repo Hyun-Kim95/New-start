@@ -1,0 +1,41 @@
+class CustomException(Exception):
+    def __init__(self):
+        Exception.__init__(self)
+        print("####내가 만든 오류가 생성되었어요!####")
+    def __str__(self):
+        return "오류가 발생했어요"
+
+raise CustomException
+
+# 실행결과
+# ####내가 만든 오류가 생성되었어요!####
+# Traceback (most recent call last):
+#   File "d:\파이썬\inherit03.py", line 8, in <module>
+#     raise CustomException
+# __main__.CustomException: 오류가 발생했어요
+#------------------------------------------------------
+#사용자 정의 예외를 생성합니다.
+class CustomException(Exception):
+    def __init__(self, message, value):
+        Exception.__init__(self)
+        self.message = message
+        self.value = value
+        
+    def __str__(self):
+        return self.message
+
+    def print(self):
+        print("##### 오류 정보 #####")
+        print("메시지:", self.message)
+        print("값:", self.value)
+
+#예외를 발생시켜 봅니다.
+try:
+    raise CustomException("딱히 이유 없음", 273)
+except CustomException as e:
+    e.print()
+
+# 실행결과
+# ##### 오류 정보 #####
+# 메시지: 딱히 이유 없음
+# 값: 273
