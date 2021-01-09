@@ -20,3 +20,4 @@ for i in range(num):
 
 #sys.stdout.write: 1. print처럼 작용(따로 해도 한줄에 출력가능)
 #                  2. 문자열만 출력가능(따옴표 필수)
+#                  3. print로 할때보다 처리가 빠름
