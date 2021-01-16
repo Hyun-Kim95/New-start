@@ -1,0 +1,7 @@
+n = list(str(input()))
+N = []
+for i in range(len(n)):
+    N.append(n[i][0])
+N.sort(reverse=True)    # a.sort(reverse=True) : 내림차순으로 정렬
+
+print(*N,sep='')
