@@ -28,3 +28,11 @@ P = product(range(1, N+1), repeat=M)    # repeat= : 길이
 
 for i in P:
     print(*i)
+
+#-------------------------------------------------------아래는 중복가능 밑 비내림차순 수열
+from itertools import combinations_with_replacement         # combinations_with_replacement: 중복가능 비내림차수
+N, M = map(int, input().split())
+P = combinations_with_replacement(range(1, N+1), M)
+
+for i in P:
+    print(*i)
