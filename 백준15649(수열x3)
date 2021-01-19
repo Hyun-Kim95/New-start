@@ -20,3 +20,11 @@ for k in range(len(P)):
 
 for i in Q:
     print(*i)
+
+#----------------------------------------------------------아래는 중복가능 밑 오름차순
+from itertools import product           # product : 모든중복 가능 밑 오름차순 수열
+N, M = map(int, input().split())
+P = product(range(1, N+1), repeat=M)    # repeat= : 길이
+
+for i in P:
+    print(*i)
