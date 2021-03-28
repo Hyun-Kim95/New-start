@@ -1,6 +1,6 @@
 import collections
 from openpyxl import load_workbook
-wb = load_workbook("lotto_line.xlsx")
+wb = load_workbook("lotto_all_sub.xlsx")
 ws = wb.active
 
 alpha = [ "J", "K", "L", "M", "N", "O"]
@@ -20,19 +20,21 @@ s = ["W1", "W2", "W3"]
 while True:
     for i in range(6):
         전체숫자 = []
+        자리전체숫자 = []
         최근숫자 = []
         다음숫자 = []
         부호 = []
+        for j in range(6):
+            for row in ws.rows:
+                전체숫자.append(row[j+1].value)
 
         for row in ws.rows:
-            전체숫자.append(row[i+1].value)
-        
-        for q in range(1,11):
-            ws[ocha[i][q-1]] = 전체숫자[q-1] - 전체숫자[q]
-        최근숫자.append(전체숫자[0])
-        if 전체숫자[0] == 전체숫자[1]:
-            다음숫자.append(전체숫자[0])
-        전체숫자[0] = 0
+            자리전체숫자.append(row[i+1].value)
+
+        최근숫자.append(자리전체숫자[0])
+        if 자리전체숫자[0] == 자리전체숫자[1]:
+            다음숫자.append(자리전체숫자[0])
+        자리전체숫자[0] = 0
 
         while 최근숫자[0] in 전체숫자:
             a = 전체숫자.index(최근숫자[0])
@@ -51,6 +53,9 @@ while True:
         for j in range(len(다음숫자)):
             ws[alpha[i]][j].value = 다음숫자[j]
 
+        for q in range(1,11):
+            ws[ocha[i][q-1]] = 다음숫자[q-1] - 다음숫자[q]
+
         counts = collections.Counter(다음숫자)
 
         ws[maxalpha[i]].value = counts.most_common(1)[0][0]
@@ -67,5 +72,5 @@ while True:
     if ws["J{}".format(j)].value == None:
         break
 
-wb.save("lotto_line.xlsx")
+wb.save("lotto_all_sub.xlsx")
 wb.close()

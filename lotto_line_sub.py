@@ -1,6 +1,6 @@
 import collections
 from openpyxl import load_workbook
-wb = load_workbook("lotto_line.xlsx")
+wb = load_workbook("lotto_line_sub.xlsx")
 ws = wb.active
 
 alpha = [ "J", "K", "L", "M", "N", "O"]
@@ -67,5 +67,5 @@ while True:
     if ws["J{}".format(j)].value == None:
         break
 
-wb.save("lotto_line.xlsx")
+wb.save("lotto_line_sub.xlsx")
 wb.close()
