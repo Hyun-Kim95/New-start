@@ -1,15 +1,4 @@
-# python
-numbers = [1,2,3,4,5,6,7,8,9]
-
-output = [[], [], []]
-
-
-for number in numbers:
-
-    output[(number+2) % 3].append(number)
-
-
-print(output)
-
-
-#[[1,4,7], [2,5,8], [3,6,9]]
+파이썬공부
+1. 알고리즘문제
+2. 문법독학
+3. 
