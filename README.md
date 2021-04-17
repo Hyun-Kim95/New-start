@@ -88,3 +88,28 @@
 >
 >  git checkout master git pull origin master
 
+
+
+## **필요했던 것**
+
+* 깃허브에  리드미 올리기
+  * git clone https://github.com/Hyun-Kim95/python.git
+  * git add readme.md
+  * git commit -m "커밋메세지"
+  * git push origin main
+    * master -> master (fetch first) 오류
+      * git push origin +master
+        * 해결완료
+
+* 깃허브에 파일 올리기
+  * 원격 저장소 등록 및 복제
+    * git push origin 브랜치이름: 해당 브랜치를 깃허브(원격 저장소)에 등록하기
+    * clone의 경우 .git 파일이 없어도 되며 현재 파일 아래에 새롭게 파일 생성하기
+    * git clone http 또는 SSH: 원격 저장소의 http 또는 SSH값을 이용해 로컬 저장소에 파일 복제하기
+    * git clone /로컬/저장소/경로: 현재 경로에 로컬 저장소 경로 파일 복제하기
+    * pull의 경우 .git 파일이 존재해야 한다
+    * git pull origin master: 원격 저장소 중 master Branch에서 로컬 저장소로 파일 복제하기
+  * 브랜치(Branch) 생성 및 삭제
+    * git checkout -b 브랜치이름: 브랜치이름으로 새로운 브랜치를 생성한다
+    * git checkout 브랜치이름: 사용하는 브랜치를 브랜치 이름에 해당하는 브랜치로 이동한다
+    * git branch -d 브랜치이름: 브랜치 이름으로 된 브랜치를 삭제한다
