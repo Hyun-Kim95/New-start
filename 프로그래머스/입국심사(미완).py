@@ -21,6 +21,19 @@
 # 14분이 되었을 때, 첫 번째 심사대가 비고 5번째 사람이 심사를 받습니다.
 # 20분이 되었을 때, 두 번째 심사대가 비지만 6번째 사람이 그곳에서 심사를 받지 않고
 # 1분을 더 기다린 후에 첫 번째 심사대에서 심사를 받으면 28분에 모든 사람의 심사가 끝납니다.
+
+# 힌트
+
+# 심사하는 시간이 1 부터 max(times) * n 까지 존재합니다.
+# 그 중, 모든 사람을 심사할 수 있는 가장 작은 시간을 찾는 것이 이 문제의 정답이죠
+# 1~ max(times)n사이의 적절한 값을 찾는 방식이고 상수값들이 1000000000 이런식으로 굉장히 크게 주어질 수 있는 상황이니 최대한 시간을 단축해야하는 문제입니다.
+# 그래서 이진탐색으로 1~max(times)n 사이에서 값을 찾는 것이구요.
+# mid/ times[i]의 의미는, i번째 심사위원이 mid 시간 동안 심사할 수 있는 사람의 수 입니다. mid = 10 , times[0] = 3인 경우, 3초마다 심사하는 심사위원이 10초동안 총 3명의 사람을 심사할 수 있으니깐요.
+# 즉, 전체 심사위원이 mid시간동안 심사할 수 있는 사람의 수가 전체 사람의 수 (n)와 같아지는 mid값을 찾는 것이 해답이겠지요
+# 질문하신 반복문에서 sum의 값이 바로 전체 심사위원이 mid시간동안 심사할 수 있는 총 사람의 수 입니다.
+# sum == n을 만족하는 mid값은 여러개가 존재합니다.
+# max (times where mid/times[i] !=0) 만큼 존재합니다.
+# sum==n을 만족하는 값이 mid라고 했을 때, (mid+k) / times[i] == mid/times[i] 인 k가 위에서 언급한 max(times where mid/times[i]!=0)만큼 존재합니다.
 def solution(n, times):
     answer = 0
     
@@ -32,15 +45,18 @@ def solution(n, times):
     if n == 2:
         return min(times[1],times[0]*2)
 
-    while True:
-        if times[0] * n < times[-1]:
-            times.pop()
-        else:
+    chk = []
+    cnt=0
+    for i in range(len(times)):
+        if times[0]*n < times[i]:
+            cnt = 1
+            for j in range(i):
+                chk.append(times[i])
             break
-
-    chk = [i for i in times]
-    if(len(times) > 1):
-        for i in range(n-len(times)):
+    if cnt == 0:
+        chk = [i for i in times]
+    if(len(chk) > 1):
+        for i in range(n-len(chk)):
             chk_a = [chk[q] + times[q] for q in range(len(chk))]
             a = chk_a.index(min(chk_a))
             chk[a] += times[a]
@@ -49,6 +65,6 @@ def solution(n, times):
         answer = n * times[0]
     return answer
 
-n = 3
-times = [5,16]
+n = 6
+times = [1,1,1]
 print(solution(n,times))
