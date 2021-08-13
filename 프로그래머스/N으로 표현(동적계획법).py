@@ -13,6 +13,7 @@
 # 수식에는 괄호와 사칙연산만 가능하며 나누기 연산에서 나머지는 무시합니다.
 # 최솟값이 8보다 크면 -1을 return 합니다.
 
+# 3개를 사용해서 만들 수 있는 종류들은 1개를 이용해서 만들 수 있는 종류들과 2개를 이용해서 만들 수 있는 종류들을 사칙연산으로 만든 종류들과 같다를 이용해서 해결
 def solution(N, number):
     list = [0,[N]]                          # 조합으로 나올수 있는 가능한 숫자들, 여기에 계속 append하며 이후에 사용함(인덱스 == N을 사용한 개수)
     if N == number:                         # 주어진 숫자와 같은 경우는 1 리턴
@@ -22,7 +23,7 @@ def solution(N, number):
         num = int(str(N)*i)                 # 같은 숫자 반복되는 거 하나를 추가
         list_a.append(num)
         for j in range(1, i//2+1):          # 사용되는 숫자의 횟수를 구해야 하는데, 절반 이상 넘어가면 같은 결과가 나와서
-            for x in list[j]:               # i가 7일 경우
+            for x in list[j]:
                 for y in list[i-j]:         # x와 y를 더하면 i 가 되도록 만든 수다. 
                     if (x+y) not in list_a:
                         list_a.append(x+y)  # 각 사칙연산 결과를 더한다.
